@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "react-ui-patterns": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "aba633c645a5bc91119e1d3ef86c542a985581b280fda905a6c198f5e4dfa22e"
+    }
+  }
+}

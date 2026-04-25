@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700&family=Jersey+10&family=Jersey+25&family=VT323&display=swap');
+
+:root {
+  /* Core Palette - Deep Onyx & Electric Lime */
+  --bg-primary: #050505;
+  --bg-panel: rgba(10, 10, 10, 0.85);
+  --bg-surface: rgba(20, 20, 20, 0.4);
+
+  --border-dim: rgba(255, 255, 255, 0.05);
+  --border-focus: rgba(255, 255, 255, 0.15);
+  --border-glow: rgba(204, 255, 0, 0.2);
+
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --text-muted: rgba(255, 255, 255, 0.3);
+
+  /* Status Colors - Monochrome Silver */
+  --accent-nightlamp: #D1D1D1;
+  --accent-nightlamp-dim: rgba(209, 209, 209, 0.05);
+  --accent-nightlamp-dark: #A1A1A1;
+
+  --status-critical: #ff3131;
+  --status-critical-bg: rgba(255, 49, 49, 0.08);
+  --status-warning: #ffb800;
+  --status-warning-bg: rgba(255, 184, 0, 0.08);
+  --status-healthy: #00ff41;
+  --status-healthy-bg: rgba(0, 255, 65, 0.08);
+
+  /* Typography */
+  --font-display: 'Jersey 10', sans-serif;
+  --font-display-alt: 'Jersey 25', sans-serif;
+  --font-terminal: 'VT323', monospace;
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Spacing & Borders */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+
+  /* Glassmorphism */
+  --glass-blur: blur(20px);
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(circle at 0% 0%, rgba(209, 209, 209, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(209, 209, 209, 0.02) 0%, transparent 40%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--accent-nightlamp);
+  color: #000;
+}
+
+/* Glass Utility */
+.glass-panel {
+  background: var(--bg-panel);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-dim);
+}
+
+/* Animations */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 1.2s ease-out forwards;
+}
+
+.cursor-blink::after {
+  content: '_';
+  animation: blink 1.2s step-start infinite;
+  color: var(--accent-nightlamp);
+  font-weight: bold;
+}
+
+@keyframes brand-glow {
+
+  0%,
+  100% {
+    text-shadow: 0 0 20px var(--accent-nightlamp-dim);
+  }
+
+  50% {
+    text-shadow: 0 0 40px var(--accent-nightlamp-dim), 0 0 10px var(--accent-nightlamp);
+  }
+}
+
+@keyframes scanner-line {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.brand-shuffle {
+  animation: brand-glow 4s ease-in-out infinite;
+}
+
+/* Form Styles */
+input,
+select,
+textarea {
+  background: #111; /* Use solid background for select elements */
+  border: 1px solid var(--border-dim);
+  color: var(--text-primary);
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  width: 100%;
+}
+
+select option {
+  background: #111;
+  color: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-nightlamp);
+  background: rgba(209, 209, 209, 0.04);
+  box-shadow: 0 0 30px var(--accent-nightlamp-dim);
+}
+
+button {
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-display);
+  border: none;
+  font-weight: 600;
+}
+
+.premium-button {
+  background: var(--accent-nightlamp);
+  color: #000;
+  padding: 20px 40px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 0;
+  position: relative;
+  /* Pixel Border Effect */
+  box-shadow: 
+    4px 0 0 0 #000,
+    -4px 0 0 0 #000,
+    0 4px 0 0 #000,
+    0 -4px 0 0 #000,
+    inset -4px -4px 0 0 rgba(0,0,0,0.15);
+  transition: transform 0.1s;
+}
+
+.premium-button:hover {
+  transform: translateY(2px);
+  box-shadow: 
+    2px 0 0 0 #000,
+    -2px 0 0 0 #000,
+    0 2px 0 0 #000,
+    0 -2px 0 0 #000,
+    inset -2px -2px 0 0 rgba(0,0,0,0.15);
+}
+
+.premium-button:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-dim);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-focus);
+}
+
+/* Modern Layout Helpers */
+.container-full {
+  min-height: 100vh;
+  display: flex;
+}
+
+.hero-side {
+  flex: 1.2;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid var(--border-dim);
+}
+
+.hero-side::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.02) 1px, transparent 0);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  pointer-events: none;
+}
+
+.input-side {
+  flex: 1;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.5), transparent);
+}

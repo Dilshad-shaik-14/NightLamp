@@ -1,0 +1,30 @@
+.shuffle-parent {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+  line-height: 1;
+  visibility: hidden;
+}
+
+.shuffle-parent.is-ready {
+  visibility: visible;
+}
+
+.shuffle-char-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  position: relative;
+}
+
+.shuffle-inner {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.shuffle-char {
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+}
