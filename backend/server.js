@@ -162,7 +162,11 @@ Return only a valid JSON health report. No markdown fences, no explanation.`;
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Nightlamp backend running on http://localhost:${PORT}`);
-  console.log(`Gemini key loaded: ${!!process.env.GEMINI_API_KEY}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Nightlamp backend running on http://localhost:${PORT}`);
+    console.log(`Gemini key loaded: ${!!process.env.GEMINI_API_KEY}`);
+  });
+}
+
+module.exports = app;
